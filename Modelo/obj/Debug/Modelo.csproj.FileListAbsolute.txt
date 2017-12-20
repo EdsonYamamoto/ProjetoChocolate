@@ -1,0 +1,15 @@
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\Modelo\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\Modelo\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\Modelo\obj\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\Modelo\obj\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\Modelo\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\Modelo\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\Modelo\obj\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\Modelo\obj\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\Modelo\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Projeto\Modelo\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\Modelo\obj\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Projeto\Modelo\obj\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache

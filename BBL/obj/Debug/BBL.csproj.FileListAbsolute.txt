@@ -1,0 +1,27 @@
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\bin\Debug\BBL.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\bin\Debug\BBL.pdb
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\bin\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\bin\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\obj\Debug\BBL.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\obj\Debug\BBL.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\BBL\obj\Debug\BBL.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\bin\Debug\BBL.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\bin\Debug\BBL.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\bin\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\bin\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\obj\Debug\BBL.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\obj\Debug\BBL.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\BBL\obj\Debug\BBL.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\bin\Debug\BBL.dll
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\bin\Debug\BBL.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\bin\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\bin\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\obj\Debug\BBL.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\obj\Debug\BBL.dll
+C:\Users\Edson\Documents\GitHub\Projeto\BBL\obj\Debug\BBL.pdb

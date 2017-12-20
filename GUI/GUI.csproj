@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FE396DA-2E54-4B31-83D2-73818B1D813A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GUI</RootNamespace>
+    <AssemblyName>GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmCadastroBairro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroBairro.Designer.cs">
+      <DependentUpon>frmCadastroBairro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroCaracteristicaManufaturado1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroCaracteristicaManufaturado1.Designer.cs">
+      <DependentUpon>frmCadastroCaracteristicaManufaturado1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroCaracteristicaManufaturado2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroCaracteristicaManufaturado2.Designer.cs">
+      <DependentUpon>frmCadastroCaracteristicaManufaturado2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroCidade.Designer.cs">
+      <DependentUpon>frmCadastroCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroCliente.Designer.cs">
+      <DependentUpon>frmCadastroCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroCusto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroCusto.Designer.cs">
+      <DependentUpon>frmCadastroCusto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroFabricante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroFabricante.Designer.cs">
+      <DependentUpon>frmCadastroFabricante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\frmCadastroManufaturado.cs">
+      <SubType>Form</SubType>
+      <Link>frmCadastroManufaturado.cs</Link>
+    </Compile>
+    <Compile Include="..\frmCadastroManufaturado.Designer.cs">
+      <DependentUpon>frmCadastroManufaturado.cs</DependentUpon>
+      <Link>frmCadastroManufaturado.Designer.cs</Link>
+    </Compile>
+    <Compile Include="frmCadastroOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroOrcamento.Designer.cs">
+      <DependentUpon>frmCadastroOrcamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroPedido.Designer.cs">
+      <DependentUpon>frmCadastroPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroSaidaPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroSaidaPedido.Designer.cs">
+      <DependentUpon>frmCadastroSaidaPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroTipoManufaturado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroTipoManufaturado.Designer.cs">
+      <DependentUpon>frmCadastroTipoManufaturado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaBairro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaBairro.Designer.cs">
+      <DependentUpon>frmConsultaBairro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaCaracteristicaManufaturado1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaCaracteristicaManufaturado1.Designer.cs">
+      <DependentUpon>frmConsultaCaracteristicaManufaturado1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaCaracteristicaManufaturado2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaCaracteristicaManufaturado2.Designer.cs">
+      <DependentUpon>frmConsultaCaracteristicaManufaturado2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaCidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaCidade.Designer.cs">
+      <DependentUpon>frmConsultaCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaCliente.Designer.cs">
+      <DependentUpon>frmConsultaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaCusto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaCusto.Designer.cs">
+      <DependentUpon>frmConsultaCusto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaFabricante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaFabricante.Designer.cs">
+      <DependentUpon>frmConsultaFabricante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaManufaturado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaManufaturado.Designer.cs">
+      <DependentUpon>frmConsultaManufaturado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaOrcamento.Designer.cs">
+      <DependentUpon>frmConsultaOrcamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaPedido.Designer.cs">
+      <DependentUpon>frmConsultaPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaSaidaPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaSaidaPedido.Designer.cs">
+      <DependentUpon>frmConsultaSaidaPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaTipoManufaturado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaTipoManufaturado.Designer.cs">
+      <DependentUpon>frmConsultaTipoManufaturado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaUnidadeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultaUnidadeMedida.Designer.cs">
+      <DependentUpon>frmConsultaUnidadeMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModeloDeFormularioCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModeloDeFormularioCadastro.Designer.cs">
+      <DependentUpon>frmModeloDeFormularioCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroUnidadeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroUnidadeMedida.Designer.cs">
+      <DependentUpon>frmCadastroUnidadeMedida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelatorioGanho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorioGanho.Designer.cs">
+      <DependentUpon>frmRelatorioGanho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelatorioGasto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorioGasto.Designer.cs">
+      <DependentUpon>frmRelatorioGasto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelatorioSaidaPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorioSaidaPedido.Designer.cs">
+      <DependentUpon>frmRelatorioSaidaPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSobre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSobre.Designer.cs">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="frmCadastroBairro.resx">
+      <DependentUpon>frmCadastroBairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroCaracteristicaManufaturado1.resx">
+      <DependentUpon>frmCadastroCaracteristicaManufaturado1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroCaracteristicaManufaturado2.resx">
+      <DependentUpon>frmCadastroCaracteristicaManufaturado2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroCidade.resx">
+      <DependentUpon>frmCadastroCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroCliente.resx">
+      <DependentUpon>frmCadastroCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroCusto.resx">
+      <DependentUpon>frmCadastroCusto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroFabricante.resx">
+      <DependentUpon>frmCadastroFabricante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\frmCadastroManufaturado.resx">
+      <DependentUpon>frmCadastroManufaturado.cs</DependentUpon>
+      <Link>frmCadastroManufaturado.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroOrcamento.resx">
+      <DependentUpon>frmCadastroOrcamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroPedido.resx">
+      <DependentUpon>frmCadastroPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroSaidaPedido.resx">
+      <DependentUpon>frmCadastroSaidaPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroTipoManufaturado.resx">
+      <DependentUpon>frmCadastroTipoManufaturado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaBairro.resx">
+      <DependentUpon>frmConsultaBairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaCaracteristicaManufaturado1.resx">
+      <DependentUpon>frmConsultaCaracteristicaManufaturado1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaCaracteristicaManufaturado2.resx">
+      <DependentUpon>frmConsultaCaracteristicaManufaturado2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaCidade.resx">
+      <DependentUpon>frmConsultaCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaCliente.resx">
+      <DependentUpon>frmConsultaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaCusto.resx">
+      <DependentUpon>frmConsultaCusto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaFabricante.resx">
+      <DependentUpon>frmConsultaFabricante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaManufaturado.resx">
+      <DependentUpon>frmConsultaManufaturado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaOrcamento.resx">
+      <DependentUpon>frmConsultaOrcamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaPedido.resx">
+      <DependentUpon>frmConsultaPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaSaidaPedido.resx">
+      <DependentUpon>frmConsultaSaidaPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaTipoManufaturado.resx">
+      <DependentUpon>frmConsultaTipoManufaturado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultaUnidadeMedida.resx">
+      <DependentUpon>frmConsultaUnidadeMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModeloDeFormularioCadastro.resx">
+      <DependentUpon>frmModeloDeFormularioCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroUnidadeMedida.resx">
+      <DependentUpon>frmCadastroUnidadeMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorioGanho.resx">
+      <DependentUpon>frmRelatorioGanho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorioGasto.resx">
+      <DependentUpon>frmRelatorioGasto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorioSaidaPedido.resx">
+      <DependentUpon>frmRelatorioSaidaPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSobre.resx">
+      <DependentUpon>frmSobre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BBL\BBL.csproj">
+      <Project>{90e1d8c3-da5e-4c60-9e2d-b749250cdc97}</Project>
+      <Name>BBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{5e93f40a-4b44-4be6-8704-97bfafdaf9ae}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{71c55a85-1fa6-4ecc-bb33-5a90c9af7c41}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Novo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\localizar.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alterar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excluir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salvar1.fw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancelar.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

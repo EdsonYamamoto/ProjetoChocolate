@@ -1,0 +1,21 @@
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\DAL\bin\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\DAL\bin\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\DAL\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\DAL\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\DAL\obj\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\Exercicios-C-Sharp\1 VisualizadorImagens\CeciliaChocolate\DAL\obj\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\DAL\bin\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\DAL\bin\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\DAL\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\DAL\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\DAL\obj\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\CeciliaChocolate\DAL\obj\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\DAL\bin\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\Projeto\DAL\bin\Debug\DAL.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\DAL\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\Projeto\DAL\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\Projeto\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\Projeto\DAL\obj\Debug\DAL.dll
+C:\Users\Edson\Documents\GitHub\Projeto\DAL\obj\Debug\DAL.pdb
