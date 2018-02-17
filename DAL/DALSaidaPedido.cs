@@ -21,7 +21,7 @@ namespace DAL
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "INSERT INTO SaidaPedido(ID_Pedido,QuantidadeEntregue ,Pago ,SYSDATETIME, Descricao) VALUES (@idpedido, @qtdentregue, @pago, GETDATE(), @descricao); SELECT @@IDENTITY;";
+            cmd.CommandText = "EXEC spInserirSaidaPedido @idpedido, @qtdentregue, @pago, @descricao;";
             cmd.Parameters.AddWithValue("@idpedido", modelo.IDPedido);
             cmd.Parameters.AddWithValue("@pago", modelo.Pago);
             cmd.Parameters.AddWithValue("@qtdentregue", modelo.QuantidadeEntregue);
@@ -35,7 +35,7 @@ namespace DAL
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "UPDATE SaidaPedido SET ID_Pedido = @idpedido , QuantidadeEntregue = @qtdentregue , Pago = @pago , SYSDATETIME = GETDATE() , Descricao = @descricao WHERE ID_SaidaManufaturado = @codigo;";
+            cmd.CommandText = "EXEC spAlteraSaidaPedido @idpedido , @qtdentregue , @pago , @descricao, @codigo;";
             cmd.Parameters.AddWithValue("@codigo", modelo.IDSaidaPedido);
             cmd.Parameters.AddWithValue("@idpedido", modelo.IDPedido);
             cmd.Parameters.AddWithValue("@pago", modelo.Pago);
@@ -50,7 +50,7 @@ namespace DAL
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "DELETE FROM SaidaPedido WHERE ID_SaidaPedido = @codigo;";
+            cmd.CommandText = "EXEC spExcluiSaidaPedido @codigo;";
             cmd.Parameters.AddWithValue("@codigo", codigo);
             conexao.Conectar();
             cmd.ExecuteNonQuery();
@@ -60,15 +60,7 @@ namespace DAL
         public DataTable Localizar(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT ID_SaidaManufaturado,SaidaPedido.ID_Pedido, Cliente.Nome, Cliente.Celular ,TipoManufaturado.Nome, CaracteristicaManufaturado1.Nome, CaracteristicaManufaturado2.Nome, Manufaturado.Nome, Pedido.Quantidade QuantidadePedida, SaidaPedido.QuantidadeEntregue, SaidaPedido.Pago, SaidaPedido.SYSDATETIME, SaidaPedido.Descricao FROM SaidaPedido" +
-                " INNER JOIN Pedido ON Pedido.ID_Pedido = SaidaPedido.ID_Pedido" +
-                " INNER JOIN Orcamento ON Orcamento.ID_Orcamento = Pedido.ID_Orcamento" +
-                " INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado" +
-                " INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado" +
-                " INNER JOIN CaracteristicaManufaturado1 ON CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 = Manufaturado.ID_CaracteristicaManufaturado1" +
-                " INNER JOIN CaracteristicaManufaturado2 ON CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 = Manufaturado.ID_CaracteristicaManufaturado2" +
-                " INNER JOIN Cliente ON Cliente.ID_Cliente = Pedido.ID_Cliente" +
-                " WHERE Cliente.Nome LIKE '%" + valor + "%'", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("EXEC spProcuraSaidaPedido '%" + valor + "%'", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -78,14 +70,7 @@ namespace DAL
             ModeloSaidaPedido modelo = new ModeloSaidaPedido();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conexao.ObjetoConexao;
-            cmd.CommandText = "SELECT * FROM SaidaPedido " +
-           " INNER JOIN Pedido ON Pedido.ID_Pedido = SaidaPedido.ID_Pedido " +
-           " INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado " +
-           " INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado " +
-           " INNER JOIN CaracteristicaManufaturado1 ON CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 = Manufaturado.ID_CaracteristicaManufaturado1 " +
-           " INNER JOIN CaracteristicaManufaturado2 ON CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 = Manufaturado.ID_CaracteristicaManufaturado2 " +
-           " INNER JOIN Cliente ON Cliente.ID_Cliente = Pedido.ID_Cliente " +
-           " WHERE ID_SaidaManufaturado = @codigo";
+            cmd.CommandText = "EXEC spProcuraIDSaidaPedido @codigo";
             cmd.Parameters.AddWithValue("@codigo", codigo);
             conexao.Conectar();
             SqlDataReader registro = cmd.ExecuteReader();

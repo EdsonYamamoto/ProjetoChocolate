@@ -20,9 +20,7 @@ namespace DAL
         public DataTable LocalizarGastos()
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT Custo.ID_Custo, Fabricante.Nome, Custo.Nome, Custo.Quantidade,Custo.Unidade,UnidadeMedida.Nome, Custo.Preco PrecoUnitario, (Custo.Preco*Custo.Quantidade) AS Total, CAST(Custo.DataCompra AS DATE) DataRegistro FROM Custo"+
-            " INNER JOIN Fabricante ON Fabricante.ID_Fabricante = Custo.ID_Fabricante"+
-            " INNER JOIN UnidadeMedida ON UnidadeMedida.ID_UnidadeMedida = Custo.ID_UnidadeMedida", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("EXEC spRelatorioGasto", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -30,10 +28,7 @@ namespace DAL
         public DataTable LocalizarGastosProduto()
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT Fabricante.Nome, Custo.Nome, SUM(Custo.Quantidade) QTD,Custo.Unidade, UnidadeMedida.Nome,(SUM(Custo.Preco)*SUM(Custo.Quantidade))AS total FROM Custo" +
-            " INNER JOIN Fabricante ON Fabricante.ID_Fabricante = Custo.ID_Fabricante" +
-            " INNER JOIN UnidadeMedida ON UnidadeMedida.ID_UnidadeMedida = Custo.ID_UnidadeMedida" +
-            " GROUP BY Fabricante.Nome, Custo.Nome, Custo.Unidade, UnidadeMedida.Nome", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("EXEC spRelatorioGastoProdutos", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -41,10 +36,7 @@ namespace DAL
         public DataTable LocalizarGastoData()
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT Fabricante.Nome, Custo.Nome, SUM(Custo.Quantidade) QTD,Custo.Unidade, UnidadeMedida.Nome,CAST(Custo.DataCompra AS DATE) DataRegistro FROM Custo" +
-            " INNER JOIN Fabricante ON Fabricante.ID_Fabricante = Custo.ID_Fabricante" +
-            " INNER JOIN UnidadeMedida ON UnidadeMedida.ID_UnidadeMedida = Custo.ID_UnidadeMedida" +
-            " GROUP BY Fabricante.Nome, Custo.Nome, Custo.Unidade, UnidadeMedida.Nome, DataCompra", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("EXEC spRelatorioGastoData", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }

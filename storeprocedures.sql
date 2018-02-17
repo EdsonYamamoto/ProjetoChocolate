@@ -1152,7 +1152,6 @@ BEGIN
 END;
 
 
-
 ------------------------
 --STORE PROCEDURE UnidadeMedida
 ------------------------
@@ -1246,3 +1245,330 @@ AS
 BEGIN
 	SELECT * FROM UnidadeMedida WHERE Nome = @nome
 END;
+------------------------
+--STORE PROCEDURE Saida Pedido
+------------------------
+
+--Inserir UnidadeMedida
+GO
+DROP PROCEDURE spInserirSaidaPedido;
+GO
+CREATE PROCEDURE spInserirSaidaPedido
+	@idpedido NUMERIC(18, 0), 
+	@qtdentregue INT, 
+	@pago NUMERIC(18, 2),
+	@descricao VARCHAR(255)
+AS
+BEGIN
+	INSERT INTO SaidaPedido(ID_Pedido,QuantidadeEntregue ,Pago ,SYSDATETIME, Descricao) 
+	VALUES (@idpedido, @qtdentregue, @pago, GETDATE(), @descricao); SELECT @@IDENTITY;
+
+END;
+/*
+GO
+DECLARE	@nome VARCHAR(150), @descricao VARCHAR(250)
+	SET @nome = 'teste' SET @descricao = 'desc'
+EXECUTE spInserirUnidadeMedida	@nome, @descricao
+*/
+
+--Alterar SaidaPedido
+GO
+DROP PROCEDURE spAlteraSaidaPedido;
+GO
+CREATE PROCEDURE spAlteraSaidaPedido
+	@idpedido NUMERIC(18,0),
+	@qtdentregue NUMERIC(18,0),
+	@pago INT,
+	@descricao VARCHAR(255),
+	@codigo NUMERIC(18, 0)
+AS
+BEGIN
+	UPDATE SaidaPedido 
+	SET 
+		ID_Pedido = @idpedido , 
+		QuantidadeEntregue = @qtdentregue , 
+		Pago = @pago , 
+		SYSDATETIME = GETDATE(), 
+		Descricao = @descricao 
+	WHERE ID_SaidaManufaturado = @codigo;
+END;
+/*
+GO
+DECLARE	@nome VARCHAR(150), @descricao VARCHAR(250), @codigo NUMERIC(18,0)
+	SET @nome = 'teste' SET @descricao = 'desc', @codigo = 5,
+EXECUTE spAlteraSaidaPedido	@nome, @descricao, @codigo
+*/
+
+--Excluir SaidaPedido
+GO
+DROP PROCEDURE spExcluiSaidaPedido;
+GO
+CREATE PROCEDURE spExcluiSaidaPedido
+	@codigo NUMERIC(18,0)
+AS
+BEGIN
+	DELETE FROM SaidaPedido WHERE ID_SaidaManufaturado = @codigo;
+END;
+
+--Procurar por SaidaPedido
+GO
+DROP PROCEDURE spProcuraSaidaPedido;
+GO
+CREATE PROCEDURE spProcuraSaidaPedido
+	@valor VARCHAR(150)
+AS
+BEGIN
+	SELECT 
+		ID_SaidaManufaturado,
+		SaidaPedido.ID_Pedido, 
+		Cliente.Nome, 
+		Cliente.Celular ,
+		TipoManufaturado.Nome, 
+		CaracteristicaManufaturado1.Nome, 
+		CaracteristicaManufaturado2.Nome,
+		Manufaturado.Nome, 
+		Pedido.Quantidade QuantidadePedida, 
+		SaidaPedido.QuantidadeEntregue, 
+		SaidaPedido.Pago, 
+		SaidaPedido.SYSDATETIME, 
+		SaidaPedido.Descricao 
+	FROM SaidaPedido
+	INNER JOIN Pedido ON Pedido.ID_Pedido = SaidaPedido.ID_Pedido
+    INNER JOIN Orcamento ON Orcamento.ID_Orcamento = Pedido.ID_Orcamento
+    INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado
+    INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado
+	INNER JOIN CaracteristicaManufaturado1 ON CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 = Manufaturado.ID_CaracteristicaManufaturado1
+	INNER JOIN CaracteristicaManufaturado2 ON CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 = Manufaturado.ID_CaracteristicaManufaturado2
+	INNER JOIN Cliente ON Cliente.ID_Cliente = Pedido.ID_Cliente
+	WHERE Cliente.Nome LIKE '%'+@valor+'%'
+END;
+
+--Procurar por ID SaidaPedido
+GO
+DROP PROCEDURE spProcuraIDSaidaPedido;
+GO
+CREATE PROCEDURE spProcuraIDSaidaPedido
+	@codigo NUMERIC(18,0)
+AS
+BEGIN
+	SELECT * FROM SaidaPedido
+    INNER JOIN Pedido ON Pedido.ID_Pedido = SaidaPedido.ID_Pedido 
+    INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado 
+    INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado 
+    INNER JOIN CaracteristicaManufaturado1 ON CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 = Manufaturado.ID_CaracteristicaManufaturado1 
+    INNER JOIN CaracteristicaManufaturado2 ON CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 = Manufaturado.ID_CaracteristicaManufaturado2 
+    INNER JOIN Cliente ON Cliente.ID_Cliente = Pedido.ID_Cliente 
+    WHERE ID_SaidaManufaturado =  @codigo
+END;
+/*
+GO
+DECLARE
+	@valor VARCHAR(150)
+	SET @valor = 't'
+	EXECUTE spProcuraSaidaPedido	@valor
+*/
+--Procura por SaidaPedido existente
+/*
+GO
+DROP PROCEDURE spVerificaSaidaPedidoExistente;
+GO
+CREATE PROCEDURE spVerificaSaidaPedidoExistente
+	@nome VARCHAR(150)
+AS
+BEGIN
+	SELECT * FROM SaidaPedido WHERE Nome = @nome
+END;
+*/
+------------------------
+--STORE PROCEDURE Relatorios de Ganhos
+------------------------
+--Relatorios de ganhos
+GO
+DROP PROCEDURE spRelatorioGanhos;
+GO
+CREATE PROCEDURE spRelatorioGanhos
+AS
+BEGIN
+	SELECT 
+		TipoManufaturado.Nome Tipo, 
+		CaracteristicaManufaturado1.Nome, 
+		CaracteristicaManufaturado2.Nome, 
+		Manufaturado.Nome Manufaturado, 
+		SUM(Pedido.Quantidade) QTD, 
+		SUM(Pedido.Quantidade * Manufaturado.Preco) Ganho_total 
+	FROM Pedido
+    INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado
+    INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado
+    INNER JOIN CaracteristicaManufaturado1 ON CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 = Manufaturado.ID_CaracteristicaManufaturado1
+    INNER JOIN CaracteristicaManufaturado2 ON CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 = Manufaturado.ID_CaracteristicaManufaturado2
+    GROUP BY TipoManufaturado.Nome, CaracteristicaManufaturado1.Nome, CaracteristicaManufaturado2.Nome, Manufaturado.Nome
+END;
+	
+
+--Relatorios de ganho
+GO
+DROP PROCEDURE spRelatorioGanhosCliente;
+GO
+CREATE PROCEDURE spRelatorioGanhosCliente
+AS
+BEGIN
+	SELECT 
+		Cliente.ID_Cliente, 
+		Cliente.Nome, 
+		TipoManufaturado.Nome Tipo, 
+		CaracteristicaManufaturado1.Nome, 
+		CaracteristicaManufaturado2.Nome, 
+		Manufaturado.Nome Manufaturado, 
+		SUM( Pedido.Quantidade) QTD 
+	FROM Pedido
+	INNER JOIN Cliente cliente ON cliente.ID_Cliente = Pedido.ID_Cliente
+	INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado
+	INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado
+	INNER JOIN CaracteristicaManufaturado1 ON CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 = Manufaturado.ID_CaracteristicaManufaturado1
+	INNER JOIN CaracteristicaManufaturado2 ON CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 = Manufaturado.ID_CaracteristicaManufaturado2
+	INNER JOIN UnidadeMedida ON UnidadeMedida.ID_UnidadeMedida = Manufaturado.ID_UnidadeMedida
+	INNER JOIN Orcamento ON Orcamento.ID_Orcamento = Pedido.ID_Orcamento
+	GROUP BY Cliente.ID_Cliente, Cliente.Nome, TipoManufaturado.Nome, CaracteristicaManufaturado1.Nome, CaracteristicaManufaturado2.Nome, Manufaturado.Nome
+END;
+
+--Relatorios de ganho por data
+GO
+DROP PROCEDURE spRelatorioGanhosData;
+GO
+CREATE PROCEDURE spRelatorioGanhosData
+AS
+BEGIN
+	SELECT Cliente.Nome,CAST(Orcamento.DataReg as DATE) Data, COUNT(Orcamento.DataReg) QTD FROM Pedido
+	INNER JOIN Cliente cliente ON cliente.ID_Cliente = Pedido.ID_Cliente
+	INNER JOIN Orcamento ON Orcamento.ID_Orcamento = Pedido.ID_Orcamento 
+	GROUP BY Cliente.Nome, Orcamento.DataReg
+END;
+------------------------
+--STORE PROCEDURE Gastos
+------------------------
+--Relatorios de gasto
+GO
+DROP PROCEDURE spRelatorioGasto;
+GO
+CREATE PROCEDURE spRelatorioGasto
+AS
+BEGIN
+	SELECT 
+		Custo.ID_Custo, 
+		Fabricante.Nome, 
+		Custo.Nome, 
+		Custo.Quantidade,
+		Custo.Unidade,
+		UnidadeMedida.Nome, 
+		Custo.Preco PrecoUnitario, 
+		(Custo.Preco*Custo.Quantidade) AS Total, 
+		CAST(Custo.DataCompra AS DATE) DataRegistro 
+	FROM Custo
+    INNER JOIN Fabricante ON Fabricante.ID_Fabricante = Custo.ID_Fabricante
+    INNER JOIN UnidadeMedida ON UnidadeMedida.ID_UnidadeMedida = Custo.ID_UnidadeMedida
+END;
+
+--Relatorios de gasto Produtos 
+GO
+DROP PROCEDURE spRelatorioGastoProdutos;
+GO
+CREATE PROCEDURE spRelatorioGastoProdutos	
+AS
+BEGIN
+	SELECT 
+		Fabricante.Nome, 
+		Custo.Nome, 
+		SUM(Custo.Quantidade) QTD,
+		Custo.Unidade, 
+		UnidadeMedida.Nome,
+		(SUM(Custo.Preco)*SUM(Custo.Quantidade))AS total 
+	FROM Custo
+	INNER JOIN Fabricante ON Fabricante.ID_Fabricante = Custo.ID_Fabricante
+	INNER JOIN UnidadeMedida ON UnidadeMedida.ID_UnidadeMedida = Custo.ID_UnidadeMedida
+	GROUP BY Fabricante.Nome, Custo.Nome, Custo.Unidade, UnidadeMedida.Nome
+END;
+
+
+--Relatorios de gasto Data 
+GO
+DROP PROCEDURE spRelatorioGastoData;
+GO
+CREATE PROCEDURE spRelatorioGastoData	
+AS
+BEGIN
+	SELECT 
+		Fabricante.Nome, 
+		Custo.Nome, 
+		SUM(Custo.Quantidade) QTD,
+		Custo.Unidade, 
+		UnidadeMedida.Nome,
+		CAST(Custo.DataCompra AS DATE) DataRegistro 
+	FROM Custo
+	INNER JOIN Fabricante ON Fabricante.ID_Fabricante = Custo.ID_Fabricante
+	INNER JOIN UnidadeMedida ON UnidadeMedida.ID_UnidadeMedida = Custo.ID_UnidadeMedida
+	GROUP BY Fabricante.Nome, Custo.Nome, Custo.Unidade, UnidadeMedida.Nome, DataCompra
+END;
+
+------------------------
+--STORE PROCEDURE Relatorios de venda
+------------------------
+--Relatorios venda 
+GO
+DROP PROCEDURE spRelatorioVenda;
+GO
+CREATE PROCEDURE spRelatorioVenda	
+AS
+BEGIN
+	SELECT 
+		pedido.ID_Orcamento, 
+		Orcamento.Nome,
+		SUM(Pedido.Desconto) DescontoTotal, 
+		SUM( Manufaturado.Preco*Pedido.Quantidade)-SUM(Pedido.Desconto) TotalPedido, 
+		SUM(SaidaPedido.Pago) TotalPago, 
+		SUM( Manufaturado.Preco*Pedido.Quantidade)-SUM(Pedido.Desconto)-SUM(SaidaPedido.Pago) DiferencaTotal 
+	FROM pedido 
+	INNER JOIN Orcamento ON Orcamento.ID_Orcamento = Pedido.ID_Orcamento 
+	INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado 
+	INNER JOIN SaidaPedido ON SaidaPedido.ID_Pedido = Pedido.ID_Pedido 
+	GROUP BY pedido.ID_Orcamento, Orcamento.Nome
+END;
+
+
+
+--Relatorios venda Faturado
+GO
+DROP PROCEDURE spRelatorioVendaFaturado;
+GO
+CREATE PROCEDURE spRelatorioVendaFaturado	
+AS
+BEGIN
+	SELECT 
+		pedido.ID_Orcamento, 
+		Orcamento.Nome,TipoManufaturado.Nome, 
+		CaracteristicaManufaturado1.Nome,
+		CaracteristicaManufaturado2.Nome,
+		Manufaturado.Nome , 
+		Pedido.Quantidade qtdPedido, 
+		SUM(QuantidadeEntregue) qtdEntregue, 
+		SUM(Pedido.Quantidade - QuantidadeEntregue) faltaFabricar 
+	FROM saidapedido 
+	INNER JOIN Pedido ON Pedido.ID_Pedido = SaidaPedido.ID_Pedido 
+	INNER JOIN Orcamento ON Orcamento.ID_Orcamento = Pedido.ID_Orcamento 
+	INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado 
+	INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado 
+	INNER JOIN CaracteristicaManufaturado1 ON Manufaturado.ID_CaracteristicaManufaturado1 = CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 
+	INNER JOIN CaracteristicaManufaturado2 ON Manufaturado.ID_CaracteristicaManufaturado2 = CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 
+	GROUP BY pedido.ID_Orcamento, Orcamento.Nome,TipoManufaturado.Nome, CaracteristicaManufaturado1.Nome,CaracteristicaManufaturado2.Nome,Manufaturado.Nome, Pedido.Quantidade
+END;
+
+--Relatorios venda fabricar
+GO
+DROP PROCEDURE spRelatorioVendaFabricar;
+GO
+CREATE PROCEDURE spRelatorioVendaFabricar	
+AS
+BEGIN
+	SELECT TipoManufaturado.Nome, CaracteristicaManufaturado1.Nome,CaracteristicaManufaturado2.Nome,Manufaturado.Nome, SUM(Pedido.Quantidade - QuantidadeEntregue) Fabricar from saidapedido INNER JOIN Pedido ON Pedido.ID_Pedido = SaidaPedido.ID_Pedido INNER JOIN Orcamento ON Orcamento.ID_Orcamento = Pedido.ID_Orcamento INNER JOIN Manufaturado ON Manufaturado.ID_Manufaturado = Pedido.ID_Manufaturado INNER JOIN TipoManufaturado ON TipoManufaturado.ID_TipoManufaturado = Manufaturado.ID_TipoManufaturado INNER JOIN CaracteristicaManufaturado1 ON Manufaturado.ID_CaracteristicaManufaturado1 = CaracteristicaManufaturado1.ID_CaracteristicaManufaturado1 INNER JOIN CaracteristicaManufaturado2 ON Manufaturado.ID_CaracteristicaManufaturado2 = CaracteristicaManufaturado2.ID_CaracteristicaManufaturado2 GROUP BY TipoManufaturado.Nome, CaracteristicaManufaturado1.Nome,CaracteristicaManufaturado2.Nome,Manufaturado.Nome HAVING (SUM(Pedido.Quantidade - QuantidadeEntregue)>0) 
+END;
+
+EXEC spProcuraIDSaidaPedido 10

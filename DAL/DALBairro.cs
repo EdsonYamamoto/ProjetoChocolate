@@ -59,8 +59,7 @@ namespace DAL
         public DataTable Localizara(String valor)
         {
             DataTable tabela = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Bairro " +
-                "WHERE Bairro.Nome LIKE '%" + valor + "%'", conexao.StringConexao);
+            SqlDataAdapter da = new SqlDataAdapter("EXEC spProcuraBairro '%" + valor + "%'", conexao.StringConexao);
             da.Fill(tabela);
             return tabela;
         }
@@ -76,18 +75,6 @@ namespace DAL
             da.Fill(tabela);
             return tabela;
         }
-        
-        /*
-        public DataTable Localizar(String valor)
-        {
-
-            DataTable tabela = new DataTable();
-
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * from Bairro WHERE NOME LIKE '%" + valor + "%'", conexao.StringConexao);
-            da.Fill(tabela);
-            return tabela;
-        }
-        */
 
         public int VerificaExistente(String valor) // 0 = não existe valor
         {

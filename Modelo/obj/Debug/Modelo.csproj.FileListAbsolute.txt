@@ -13,3 +13,8 @@ C:\Users\Edson\Documents\GitHub\Projeto\Modelo\bin\Debug\Modelo.pdb
 C:\Users\Edson\Documents\GitHub\Projeto\Modelo\obj\Debug\Modelo.dll
 C:\Users\Edson\Documents\GitHub\Projeto\Modelo\obj\Debug\Modelo.pdb
 C:\Users\Edson\Documents\GitHub\Projeto\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\ProjetoChocolate\Modelo\bin\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\ProjetoChocolate\Modelo\bin\Debug\Modelo.pdb
+C:\Users\Edson\Documents\GitHub\ProjetoChocolate\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
+C:\Users\Edson\Documents\GitHub\ProjetoChocolate\Modelo\obj\Debug\Modelo.dll
+C:\Users\Edson\Documents\GitHub\ProjetoChocolate\Modelo\obj\Debug\Modelo.pdb
